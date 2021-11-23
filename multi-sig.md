@@ -1,4 +1,4 @@
-# Multi Sig 
+# Multi Sig
 
 The idea of securing your team funds/having a decentralized consortium described through a contract is really exciting to me. As we continue to advance with crypto economics and science I feel we will all begin to form these groups where issues such as deciding the direction of a group or enacting a collaborative action can be done entirely on-chain, quickly and cheaply.
 
@@ -35,29 +35,40 @@ Included below are some example 'custom' JSON proposals you can use to help draf
 }
 ```
 
-## Transfer 100000 milly of token 
+## Transfer 100000 milly of token
 
 `[{"wasm":{"execute":{"contract_addr": "<yournewtokenaddr>", "funds":[], "msg": "<msg>"}}}]`
 
 Where msg is a base64 encoded dict like this :
 
 ```json
-{"transfer":{"amount":"100000000000","recipient":"<yournewtokenaddr>"}}
+{ "transfer": { "amount": "100000000000", "recipient": "<yournewtokenaddr>" } }
 ```
 
-## Burn a number of tokens 
+## Burn a number of tokens
 
 ```json
-[{"wasm":{"execute":{"contract_addr":"<yournewtokenaddr>","msg":"<msg>","funds":[]}}}]
-
+[
+  {
+    "wasm": {
+      "execute": {
+        "contract_addr": "<yournewtokenaddr>",
+        "msg": "<msg>",
+        "funds": []
+      }
+    }
+  }
+]
 ```
 
 Where msg is a base64 encoded dict like this :
 
 ```json
-{"burn": {
+{
+  "burn": {
     "amount": "100000000000000"
-}}
+  }
+}
 ```
 
 ### Terraswap interactions
@@ -86,8 +97,13 @@ Creating a liquidity pair
 Encode the above with base 64 and provide as msg to this call
 
 ```json
-[{"wasm":{"execute":{"contract_addr":"addr","msg":"<msg>","funds":[]}}}]
-
+[
+  {
+    "wasm": {
+      "execute": { "contract_addr": "addr", "msg": "<msg>", "funds": [] }
+    }
+  }
+]
 ```
 
 Before providing liquidity you need to increase the allowance of the LP pair:
